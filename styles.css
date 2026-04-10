@@ -1,0 +1,211 @@
+/* --- VARIABLES --- */
+:root {
+    --primary-blue: #002e7a;
+    --accent-gold: #C8A27A;
+    --glass-white: rgba(255, 255, 255, 0.65);
+}
+
+/* --- RESET ET BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- FOND FIXE --- */
+.fixed-background {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('images/bg.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER --- */
+.main-header { padding: 40px 0 20px; text-align: center; width: 100%; }
+.site-logo { max-height: 90px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
+
+.header-tarif { text-align: left; }
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-blue);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+.back-button:hover { transform: translateX(-5px); background: var(--accent-gold); }
+
+/* --- LAYOUT --- */
+.vertical-layout { flex: 1; display: flex; flex-direction: column; gap: 30px; padding-bottom: 50px; width: 100%; }
+
+/* --- TUILES GLASS --- */
+.glass-tile {
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 40px;
+    padding: 60px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* --- TITRES --- */
+.hero-title {
+    font-family: 'Abril Fatface', cursive;
+    color: var(--accent-gold);
+    font-size: 3rem;
+    padding: 15px 0;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.title-wrapper { display: inline-block; margin-bottom: 20px; max-width: 100%; }
+.title-bar { width: 100%; height: 4px; background-color: var(--accent-gold); border-radius: 10px; }
+.section-title { font-family: 'Abril Fatface', cursive; color: var(--accent-gold); font-size: 2.2rem; margin-bottom: 30px; text-transform: uppercase; }
+
+/* --- SERVICES --- */
+.services-line { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 1.1rem; color: var(--primary-blue); font-weight: 600; text-transform: uppercase; }
+.dot { color: var(--accent-gold); font-size: 1.5rem; }
+
+/* --- BADGES D'ACTION (NAVIGATION) --- */
+.action-badges-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 15px;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex: 1;
+    max-width: 240px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* ANIMATION AU SURVOL */
+.badge-item:hover {
+    transform: translateY(-8px); /* Le bouton se soulève */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* L'ombre s'accentue */
+    filter: brightness(1.1); /* Légère augmentation de la luminosité */
+}
+
+.badge-icon { width: 24px; height: 24px; object-fit: contain; }
+.badge-label { margin-left: 10px; white-space: nowrap; }
+
+.instagram-badge { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.facebook-badge { background-color: #3b5998; }
+.boutique-badge { background-color: var(--accent-gold); }
+.prestations-badge { background-color: var(--primary-blue); }
+
+/* --- CARROUSEL (5 PHOTOS) --- */
+.carousel-full-tile { width: 100%; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); position: relative; padding: 0; }
+.carousel-slider {
+    display: flex;
+    width: 600%;
+    animation: carouselAnimation 20s infinite ease-in-out;
+}
+.carousel-image {
+    width: calc(100% / 6);
+    height: 550px;
+    object-fit: cover;
+    display: block;
+}
+@keyframes carouselAnimation {
+    0%, 15% { transform: translateX(0%); }             /* Photo 1 */
+    20%, 35% { transform: translateX(-16.66%); }       /* Photo 2 */
+    40%, 55% { transform: translateX(-33.33%); }       /* Photo 3 */
+    60%, 75% { transform: translateX(-50%); }          /* Photo 4 */
+    80%, 95% { transform: translateX(-66.66%); }       /* Photo 5 */
+    100% { transform: translateX(-83.33%); }           /* Vers copie Photo 1 */
+}
+
+/* --- HORAIRES --- */
+.schedule-container { max-width: 650px; margin: 0 auto; }
+.schedule-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(0, 46, 122, 0.1); }
+.day { color: var(--primary-blue); font-weight: 700; text-transform: uppercase; }
+.hours-sep { color: var(--accent-gold); margin: 0 8px; font-weight: 700; }
+
+/* --- CONTACT & MAP --- */
+.contact-tile { padding: 0 !important; }
+.map-container { width: 100%; line-height: 0; border-top: 1px solid rgba(255, 255, 255, 0.3); }
+.contact-split-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 50px 60px; gap: 40px; }
+.contact-left { flex: 1; text-align: left; }
+.contact-right { flex: 1.5; text-align: left; }
+.contact-title-left { font-size: 2.8rem; margin: 0; }
+.desktop-br { display: inline; }
+.info-list-horizontal { display: flex; flex-direction: column; gap: 15px; }
+.info-line { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; font-weight: 600; color: var(--primary-blue); }
+.info-line i { color: var(--accent-gold); width: 25px; text-align: center; }
+
+/* --- GRILLE TARIFS --- */
+.pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; text-align: left; }
+.pricing-category { background: rgba(255, 255, 255, 0.4); padding: 25px; border-radius: 25px; }
+.category-subtitle { color: var(--primary-blue); font-family: 'Abril Fatface', cursive; font-size: 1.4rem; margin-bottom: 20px; border-bottom: 2px solid var(--accent-gold); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.price-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(0, 46, 122, 0.1); font-weight: 600; }
+.price { color: var(--primary-blue); font-weight: 800; }
+
+/* --- CONTENU LEGAL --- */
+.legal-content { text-align: left; max-width: 800px; margin: 0 auto; }
+.legal-section { margin-bottom: 30px; }
+.legal-section h3 { color: var(--primary-blue); margin-bottom: 10px; font-size: 1.2rem; border-left: 4px solid var(--accent-gold); padding-left: 15px; }
+.legal-section p { margin-bottom: 10px; font-size: 0.95rem; color: #444; }
+.legal-section a { color: var(--primary-blue); font-weight: 600; }
+
+/* --- FOOTER --- */
+.main-footer { padding: 20px 0; background: white; border-top: 1px solid #ddd; width: 100%; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; color: black; font-size: 0.9rem; }
+.legal-link { color: black; text-decoration: underline; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero-title { font-size: 1.6rem; }
+    .glass-tile { padding: 30px 20px; }
+    .badge-label { display: none; }
+    .badge-item:hover { transform: scale(1.1); } /* Sur mobile on préfère un léger zoom qu'un décalage */
+    .carousel-image { height: 350px; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .contact-split-wrapper { flex-direction: column; text-align: center; padding: 30px 20px; }
+    .contact-left, .contact-right { text-align: center; width: 100%; }
+    .desktop-br { display: none; }
+    .info-line { justify-content: center; font-size: 0.9rem; }
+    .footer-content { flex-direction: column; gap: 8px; text-align: center; }
+}
