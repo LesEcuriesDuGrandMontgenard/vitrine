@@ -195,22 +195,7 @@ body {
 .footer-content { display: flex; justify-content: space-between; align-items: center; color: black; font-size: 0.9rem; }
 .legal-link { color: black; text-decoration: underline; }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-    .hero-title { font-size: 1.6rem; }
-    .glass-tile { padding: 30px 20px; }
-    .badge-label { display: none; }
-    .badge-item:hover { transform: scale(1.1); } /* Sur mobile on préfère un léger zoom qu'un décalage */
-    .carousel-image { height: 350px; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .contact-split-wrapper { flex-direction: column; text-align: center; padding: 30px 20px; }
-    .contact-left, .contact-right { text-align: center; width: 100%; }
-    .desktop-br { display: none; }
-    .info-line { justify-content: center; font-size: 0.9rem; }
-    .footer-content { flex-direction: column; gap: 8px; text-align: center; }
-}
-
-/* --- BANDEAU ANNONCE (CORRIGÉ MOBILE) --- */
+/* --- BANDEAU ANNONCE --- */
 .announcement-banner {
     background: rgba(0, 46, 122, 0.95);
     backdrop-filter: blur(10px);
@@ -231,11 +216,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap; /* Permet au texte de passer dessous si l'écran est trop petit */
     gap: 8px 10px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
+    flex-wrap: wrap; /* Autorise le texte à passer à la ligne */
     max-width: 100%;
+}
+
+.banner-content span {
+    white-space: normal; /* Permet au texte de se couper sur mobile */
 }
 
 .banner-tag {
@@ -247,23 +236,53 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .banner-icon {
     color: var(--accent-gold);
     font-size: 0.85rem;
+    flex-shrink: 0;
 }
 
-/* Ajustement mobile pour éviter tout dézoom */
-@media (max-width: 600px) {
-    .announcement-banner {
-        padding: 8px 10px;
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    /* Sécurité anti-dézoom */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
     }
+
+    /* Ajustement bandeau */
     .banner-content {
         font-size: 0.8rem;
-        gap: 6px;
     }
     .banner-icon {
-        display: none; /* Masqué sur mobile pour économiser l'espace */
+        display: none; /* Masque l'icône sur mobile pour gagner de la place */
     }
+
+    /* Badges sur 2 lignes (2x2) pour éviter de pousser la largeur */
+    .action-badges-container {
+        flex-wrap: wrap !important;
+        gap: 10px;
+    }
+    .badge-item {
+        flex: 1 1 45% !important;
+        max-width: 48%;
+        padding: 10px 5px;
+    }
+    .badge-label {
+        display: inline-block !important;
+        font-size: 0.8rem;
+    }
+
+    .hero-title { font-size: 1.6rem; }
+    .glass-tile { padding: 30px 20px; }
+    .carousel-image { height: 350px; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .contact-split-wrapper { flex-direction: column; text-align: center; padding: 30px 20px; }
+    .contact-left, .contact-right { text-align: center; width: 100%; }
+    .desktop-br { display: none; }
+    .info-line { justify-content: center; font-size: 0.9rem; }
+    .footer-content { flex-direction: column; gap: 8px; text-align: center; }
 }
