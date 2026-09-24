@@ -195,89 +195,12 @@ body {
 .footer-content { display: flex; justify-content: space-between; align-items: center; color: black; font-size: 0.9rem; }
 .legal-link { color: black; text-decoration: underline; }
 
-/* --- BANDEAU ANNONCE --- */
-.announcement-banner {
-    background: rgba(0, 46, 122, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--accent-gold);
-    color: #ffffff;
-    padding: 10px 15px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 100;
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.banner-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px 10px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    flex-wrap: wrap; /* Autorise le texte à passer à la ligne */
-    max-width: 100%;
-}
-
-.banner-content span {
-    white-space: normal; /* Permet au texte de se couper sur mobile */
-}
-
-.banner-tag {
-    background: var(--accent-gold);
-    color: #ffffff;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.banner-icon {
-    color: var(--accent-gold);
-    font-size: 0.85rem;
-    flex-shrink: 0;
-}
-
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    /* Sécurité anti-dézoom */
-    html, body {
-        overflow-x: hidden !important;
-        width: 100% !important;
-    }
-
-    /* Ajustement bandeau */
-    .banner-content {
-        font-size: 0.8rem;
-    }
-    .banner-icon {
-        display: none; /* Masque l'icône sur mobile pour gagner de la place */
-    }
-
-    /* Badges sur 2 lignes (2x2) pour éviter de pousser la largeur */
-    .action-badges-container {
-        flex-wrap: wrap !important;
-        gap: 10px;
-    }
-    .badge-item {
-        flex: 1 1 45% !important;
-        max-width: 48%;
-        padding: 10px 5px;
-    }
-    .badge-label {
-        display: inline-block !important;
-        font-size: 0.8rem;
-    }
-
     .hero-title { font-size: 1.6rem; }
     .glass-tile { padding: 30px 20px; }
+    .badge-label { display: none; }
+    .badge-item:hover { transform: scale(1.1); } /* Sur mobile on préfère un léger zoom qu'un décalage */
     .carousel-image { height: 350px; }
     .pricing-grid { grid-template-columns: 1fr; }
     .contact-split-wrapper { flex-direction: column; text-align: center; padding: 30px 20px; }
